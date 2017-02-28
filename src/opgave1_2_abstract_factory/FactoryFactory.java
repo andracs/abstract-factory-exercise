@@ -12,16 +12,16 @@ package opgave1_2_abstract_factory;
 public class FactoryFactory {
 
     public static InfantryFactory createInfantryFactory(int race) {
-       InfantryFactory factory;
+        InfantryFactory factory;
         switch (race) {
-            case 1: 
+            case 1:
                 factory = new HumanInfantryFactory();
                 break;
-            case 2: 
+            case 2:
                 factory = new OrcInfantryFactory();
                 break;
             // case 3,4 and 5 should be imlemented here
-            default: 
+            default:
                 factory = null;
                 break;
         }

@@ -25,8 +25,7 @@ public abstract class InfantryUnit {
     public void setRace(String race) {
         this.race = race;
     }
-    
-    
+
     // Range is not imlemented yet
     public InfantryUnit(int range, int armor, int hits, int damage) {
         this.range = range;
@@ -46,19 +45,23 @@ public abstract class InfantryUnit {
         int attackDamage = (int) (Math.random() * damage) + 1;
         unit.takeDamage(attackDamage);
         System.out.println(name + " attacked " + unit.getName());
-        System.out.println(unit.name.toString() + " -" + attackDamage + " lifeponts. Remaining: " + unit.hits );
+        System.out.println(unit.name.toString() + " -" + attackDamage + " lifeponts. Remaining: " + unit.hits);
     }
 
     @Override
     public String toString() {
         String strAlive = "(ALIVE)";
-        if (!this.alive()) strAlive = "(DEAD)";
-        return "Hero " + name + " " + strAlive +" armor: " + armor + " damage: " + damage + " hits: " + hits;
+        if (!this.alive()) {
+            strAlive = "(DEAD)";
+        }
+        return "Hero " + name + " " + strAlive + " armor: " + armor + " damage: " + damage + " hits: " + hits;
     }
-    
+
     public boolean alive() {
         boolean alive = true;
-        if (hits<0) alive = false; 
+        if (hits < 0) {
+            alive = false;
+        }
         return alive;
     }
 

@@ -5,11 +5,10 @@
  */
 package opgave1_2_abstract_factory;
 
-
 public class CrossbowMan extends InfantryUnit {
 
     public CrossbowMan(int range, int armor, int hits, int damage) {
         super(range, armor, hits, damage);
     }
-    
+
 }

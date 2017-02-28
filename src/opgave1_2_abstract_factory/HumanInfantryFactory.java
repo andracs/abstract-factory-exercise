@@ -11,19 +11,19 @@ package opgave1_2_abstract_factory;
  */
 public class HumanInfantryFactory extends InfantryFactory {
 
-    public  InfantryUnit createUnit(int techLevel) {
+    public InfantryUnit createUnit(int techLevel) {
         InfantryUnit character;
         switch (techLevel) {
-            case 1: 
+            case 1:
                 character = new RockHauler(3, 5, 20, 7);
                 character.setRace("Human");
                 break;
-            case 2: 
+            case 2:
                 character = new SpearThrower(3, 5, 20, 8);
                 character.setRace("Human");
                 break;
             // case 3,4 and 5 should be imlemented here
-            default: 
+            default:
                 character = null;
                 break;
         }
