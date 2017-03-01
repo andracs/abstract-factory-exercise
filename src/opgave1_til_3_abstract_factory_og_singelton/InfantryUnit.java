@@ -38,14 +38,16 @@ public abstract class InfantryUnit {
         int reduction = (int) (Math.random() * armor);
         if (damage > reduction) {
             hits = hits - (damage - reduction);
-        }
+            System.out.println("Armor took " + reduction + " damage.");
+        } else { System.out.println("Armor is taking all damage!");}
     }
 
     public void attack(InfantryUnit unit) {
+        System.out.println(name + " attacked " + unit.getName());
         int attackDamage = (int) (Math.random() * damage) + 1;
         unit.takeDamage(attackDamage);
-        System.out.println(name + " attacked " + unit.getName());
-        System.out.println(unit.name.toString() + " -" + attackDamage + " lifeponts. Remaining: " + unit.hits);
+        System.out.println(unit.name + " dealt " + attackDamage +
+                " damage (hits). Remaining: " + unit.hits);
     }
 
     @Override
