@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package opgave1_2_abstract_factory;
+package opgave1_til_3_abstract_factory_og_singelton;
 
 public class SpearThrower extends InfantryUnit {
 

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package opgave1_2_abstract_factory;
+package opgave1_til_3_abstract_factory_og_singelton;
 
-public class RockHauler extends InfantryUnit {
+public class Musketeer extends InfantryUnit {
 
-    public RockHauler(int range, int armor, int hits, int damage) {
+    public Musketeer(int range, int armor, int hits, int damage) {
         super(range, armor, hits, damage);
     }
 
