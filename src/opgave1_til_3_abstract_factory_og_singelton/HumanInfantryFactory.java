@@ -15,7 +15,7 @@ public class HumanInfantryFactory extends InfantryFactory {
         InfantryUnit character;
         switch (techLevel) {
             case 1:
-                character = new RockHauler(3, 5, 20, 7);
+                character = new RockHauler(3, 5, 20, 7); // range, armor, hits, damage 
                 character.setRace("Human");
                 break;
             case 2:
