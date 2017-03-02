@@ -4,9 +4,7 @@
 * Lav programmet, så man kan fortryde et vilkårligt antal streger.
 *
 * Insoired by http://www.java2s.com/Code/Java/JavaFX/FreehanddrawwithPath.htm 
-*/
-
-
+ */
 package opgave_4_command;
 
 import javafx.application.Application;
@@ -18,10 +16,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -33,25 +34,27 @@ public class LinesMain extends Application {
     Path path;
     Line line;
     Button button;
+    protected Scene scene;
+    private Group root;
 
     @Override
     public void start(Stage stage) {
-        Group root = new Group();
-        final Scene scene = new Scene(root, 300, 250);
+        root = new Group();
+        scene = new Scene(root, 300, 250);
         scene.setFill(null);
 
         line = new Line();
-        
+        root.getChildren().add(line);
+
         button = new Button();
         button.setText("Undo");
         button.setAlignment(Pos.CENTER);
         button.setOnMouseReleased(undoMouseHandler);
         root.getChildren().add(button);
-        
+
         scene.setOnMouseDragged(mouseHandler);
         scene.setOnMousePressed(mouseHandler);
         scene.setOnMouseReleased(mouseHandler);
-        
 
         stage.setScene(scene);
         stage.show();
@@ -62,12 +65,17 @@ public class LinesMain extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
+                line = new Line();
                 line.setVisible(false);
                 line.setStartX(mouseEvent.getX());
                 line.setStartY(mouseEvent.getY());
-                
-                // DEBUG System.out.println(line);
-                
+                root.getChildren().add(line);
+
+                //Paint p = new Paint();
+//                Circle x = new Circle(mouseEvent.getX(), mouseEvent.getY(), 12);
+//                root.getChildren().add(x);
+                // DEBUG 
+//                System.out.println(x);
             }
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
                 line.setVisible(true);
@@ -79,6 +87,8 @@ public class LinesMain extends Application {
                 line.setEndX(mouseEvent.getX());
                 line.setEndY(mouseEvent.getY());
                 line.setVisible(true);
+//                              Circle x = new Circle(mouseEvent.getX(), mouseEvent.getY(), 12);
+                //              root.getChildren().add(x);
                 // DEBUG System.out.println(line);
             }
 
@@ -91,17 +101,21 @@ public class LinesMain extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
-            
-                
+
                 // DEBUG 
                 System.out.println("Undo event");
-                
+                int last = root.getChildren().size();
+                System.out.println(last);
+                if (last > 2) {
+                    root.getChildren().remove(last - 1);
+                }
+
             }
-          
+
         }
 
     };
-    
+
     public static void main(String[] args) {
         launch(args);
     }
