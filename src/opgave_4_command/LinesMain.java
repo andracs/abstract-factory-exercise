@@ -19,6 +19,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -36,12 +37,19 @@ public class LinesMain extends Application {
     Button button;
     protected Scene scene;
     private Group root;
+    TextField nUndos;
 
     @Override
     public void start(Stage stage) {
         root = new Group();
         scene = new Scene(root, 300, 250);
         scene.setFill(null);
+        //Defining the Name text field
+         nUndos = new TextField();
+
+nUndos.setPrefColumnCount(3);
+root.getChildren().add(nUndos);
+
 
         line = new Line();
         root.getChildren().add(line);
@@ -49,6 +57,7 @@ public class LinesMain extends Application {
         button = new Button();
         button.setText("Undo");
         button.setAlignment(Pos.CENTER);
+        button.setLayoutX(200);
         button.setOnMouseReleased(undoMouseHandler);
         root.getChildren().add(button);
 
@@ -103,11 +112,14 @@ public class LinesMain extends Application {
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_RELEASED) {
 
                 // DEBUG 
-                System.out.println("Undo event");
+                System.out.println(nUndos.getText().toString());
                 int last = root.getChildren().size();
-                System.out.println(last);
-                if (last > 2) {
-                    root.getChildren().remove(last - 1);
+                                    int i = (int) Integer.parseInt(nUndos.getText());
+
+                System.out.println(" removng " +i + " " +last);
+                
+                if (last > 3) {
+                    root.getChildren().remove(last - i, last-1);
                 }
 
             }
