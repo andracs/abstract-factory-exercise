@@ -48,6 +48,7 @@ public class LinesMain extends Application {
          nUndos = new TextField();
 
 nUndos.setPrefColumnCount(3);
+nUndos.setText("1");
 root.getChildren().add(nUndos);
 
 
@@ -114,12 +115,13 @@ root.getChildren().add(nUndos);
                 // DEBUG 
                 System.out.println(nUndos.getText().toString());
                 int last = root.getChildren().size();
-                                    int i = (int) Integer.parseInt(nUndos.getText());
+                                    int i = last - Integer.parseInt(nUndos.getText());
 
-                System.out.println(" removng " +i + " " +last);
                 
-                if (last > 3) {
-                    root.getChildren().remove(last - i, last-1);
+                if (i >= 3) {
+                                    System.out.println(" removng " +i + " " +last);
+
+                    root.getChildren().remove(i, last);
                 }
 
             }
