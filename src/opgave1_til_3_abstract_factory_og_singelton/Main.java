@@ -21,34 +21,36 @@ public class Main {
         World middleEarth = World.getWorldInstance();
         System.out.println("The name of our world is " + middleEarth.getName() + "!");
         System.out.println("***************************************");
-        
+         
         // Creating facories
+        // Not neededed:
+        // FactoryFactory master = new FactoryFactory();
         InfantryFactory humanFactory = FactoryFactory.createInfantryFactory(1);
         InfantryFactory orcFactory = FactoryFactory.createInfantryFactory(2);
 
         // The factories are producing units        
-        InfantryUnit rh = humanFactory.createUnit(1); // unit 1 -- rockhauler
-        rh.setName("Durotan");
-        InfantryUnit st = orcFactory.createUnit(2); // unit 2 -- spearthrower
-        st.setName("Orgrim");
+        InfantryUnit soldierA = humanFactory.createUnit(1); // unit 1 -- rockhauler
+        soldierA.setName("Durotan");
+        InfantryUnit soldierB = orcFactory.createUnit(2); // unit 2 -- spearthrower
+        soldierB.setName("Orgrim");
         
 
         // The units are fighting for death
-        while (rh.alive() && st.alive()) {
-            rh.attack(st);
-            st.attack(rh);
+        while (soldierA.alive() && soldierB.alive()) {
+            soldierA.attack(soldierB);
+            soldierB.attack(soldierA);
         }
         
         // The battle reults are announced
         System.out.println("***************************************");
-        if (!rh.alive()) {
-            if (!st.alive()) {
+        if (!soldierA.alive()) {
+            if (!soldierB.alive()) {
                 System.out.println("It's a draw");
             } else {
-                System.out.println(st.getRace() + " " + st.getName() + " " + st.getClass().getSimpleName() + " wins!");
+                System.out.println(soldierB.getRace() + " " + soldierB.getName() + " " + soldierB.getClass().getSimpleName() + " wins!");
             }
         } else {
-            System.out.println(rh.getRace() + " " + rh.getName() + " " + rh.getClass().getSimpleName() + " wins!");
+            System.out.println(soldierA.getRace() + " " + soldierA.getName() + " " + soldierA.getClass().getSimpleName() + " wins!");
         }
         System.out.println("***************************************");
     }
