@@ -2,7 +2,7 @@
 * Lav et simpelt tegneprogram, hvor man kan tegne en figur vha. streger. 
 * Lav programmet, så man kan fortryde et vilkårligt antal streger.
 *
-* Insoired by http://www.java2s.com/Code/Java/JavaFX/FreehanddrawwithPath.htm 
+* Inspired by http://www.java2s.com/Code/Java/JavaFX/FreehanddrawwithPath.htm 
 * 
  */
 package opgave_4_command;
