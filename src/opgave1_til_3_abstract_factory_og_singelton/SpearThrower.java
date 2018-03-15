@@ -7,6 +7,8 @@ package opgave1_til_3_abstract_factory_og_singelton;
 
 public class SpearThrower extends InfantryUnit {
 
+    public SpearThrower() {super(10,5,5,1);}
+
     public SpearThrower(int range, int armor, int hits, int damage) {
         super(range, armor, hits, damage);
     }

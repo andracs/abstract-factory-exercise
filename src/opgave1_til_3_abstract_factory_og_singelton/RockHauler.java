@@ -7,8 +7,12 @@ package opgave1_til_3_abstract_factory_og_singelton;
 
 public class RockHauler extends InfantryUnit {
 
+
+    public RockHauler() {super(3,3,3,3);}
+
     public RockHauler(int range, int armor, int hits, int damage) {
         super(range, armor, hits, damage);
     }
+
 
 }
